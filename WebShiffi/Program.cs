@@ -1,38 +1,23 @@
-using Microsoft.EntityFrameworkCore;
-using webApi.Dal;
-using WebShiffi.Bal;
-using WebShiffi.Dal;
+// Program.cs
+using AngularServer1;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
+using WebShiffi;
 
-var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-builder.Services.AddScoped<IGiftDal, GiftDal>();
-builder.Services.AddScoped<IGiftService, GiftService>();
-builder.Services.AddScoped<IDonorDal, DonorDal>();
-builder.Services.AddScoped<IDonorService, DonorService>();
-builder.Services.AddControllers();
-builder.Services.AddControllers();
-
-
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-builder.Services.AddDbContext<ChineseSaleContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("ChiniesSaleContext")));
-
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+namespace YourNamespace
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            CreateHostBuilder(args).Build().Run();
+        }
+
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                });
+    }
 }
-
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
-app.MapControllers();
-
-app.Run();

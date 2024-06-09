@@ -6,10 +6,8 @@ namespace WebShiffi.models
     {
 
         public int DonationId { get; set; }
-        public DonorsDTO Donors { get; set; }
-        public GiftDTO Gift   { get; set; }
-         
-
+        public string DonorsId { get; set; }
+        public int GiftId { get; set; }
     }
 }
  

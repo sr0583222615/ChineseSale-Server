@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using webApi.Dal;
 
@@ -11,9 +12,10 @@ using webApi.Dal;
 namespace WebShiffi.Migrations
 {
     [DbContext(typeof(ChineseSaleContext))]
-    partial class ChineseSaleContextModelSnapshot : ModelSnapshot
+    [Migration("20240102172413_aa")]
+    partial class aa
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -102,12 +104,13 @@ namespace WebShiffi.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("UsersId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UsersId1")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("OrdersId");
 
@@ -115,14 +118,14 @@ namespace WebShiffi.Migrations
 
                     b.HasIndex("OrderItemsId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UsersId1");
 
                     b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("webApi.models.User", b =>
                 {
-                    b.Property<string>("UserId")
+                    b.Property<string>("UsersId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("FirstName")
@@ -149,7 +152,7 @@ namespace WebShiffi.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("UserId");
+                    b.HasKey("UsersId");
 
                     b.ToTable("User");
                 });
@@ -229,16 +232,17 @@ namespace WebShiffi.Migrations
                     b.Property<int>("OrdersId")
                         .HasColumnType("int");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("UsersId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("UsersId1")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UsersId1");
 
                     b.ToTable("OrderItems");
                 });
@@ -257,7 +261,9 @@ namespace WebShiffi.Migrations
 
                     b.HasOne("webApi.models.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UsersId1")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Gift");
 
@@ -296,7 +302,9 @@ namespace WebShiffi.Migrations
                 {
                     b.HasOne("webApi.models.User", "user")
                         .WithMany()
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UsersId1")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("user");
                 });

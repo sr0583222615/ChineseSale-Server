@@ -15,8 +15,6 @@
         public UsersDTO Users { get; set; }
 
 
-        public int RafflesId { get; set; }
-        public RafflesDTO Raffles { get; set; }
 
 
 

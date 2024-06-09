@@ -7,8 +7,8 @@ namespace WebShiffi.models
 
         public int DonationId { get; set; }
         public Donors Donors { get; set; }
-        public Gift Gift   { get; set; }
-         
+        public Gift Gift { get; set; }
+
 
     }
 }

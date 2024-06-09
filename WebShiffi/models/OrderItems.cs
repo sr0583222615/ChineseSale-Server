@@ -1,21 +1,24 @@
-﻿namespace webApi.models
+﻿using System.ComponentModel.DataAnnotations;
+using System.Runtime.InteropServices;
+using webApi.models;
+
+namespace WebShiffi.models
 {
     public class OrderItems
     {
-        public int OrderItemsId { get; set; }
 
-        
+
+      
+
+        public int Id { get; set; }
+        public DateTime Date { get; set; }
+        public  virtual List<Orders> Orders { get; set; }
+
+        public User user { get; set; }
+        public string UsersId { get; set; }
+
+
         public int OrdersId { get; set; }
-
-        public Orders Orders { get; set; }
-
-        public int GiftId { get; set; }
-
-        public Gift Gift { get; set; }
-
-        public string usersId { get; set; }
-
-        public Users users { get; set; }
 
     }
 }
