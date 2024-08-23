@@ -1,4 +1,5 @@
 Welcome to our Chinese sale!
+
 How to use my project: In order to run this project you need: VS version 2022 (and more). .net 7 (and more). DB- SQL server. To create the DB, you can use the capabilities of Code First. All you need is: Open your package manager console, type: add-migration [DataBaseName] and then: Update-DataBase.
 
 And the DB is ready to use!
