@@ -13,4 +13,5 @@ Our project in .net7, written by web API .net core and follows the principles of
 The project maps the objects using the AutoMapper package. We created middleware to handle errors.
 
 Hope you enjoyed reading and benefited from it
+
 Shifra
